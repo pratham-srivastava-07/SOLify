@@ -1,6 +1,9 @@
+"use client"
+
 import {  useWallet } from "@solana/wallet-adapter-react"
 import { useConnection } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { Button } from "./ui/button";
 
 export default function Input({type, placeholder}: {type: string, placeholder: string}) {
     const wallet: any = useWallet()
@@ -12,8 +15,10 @@ export default function Input({type, placeholder}: {type: string, placeholder: s
         alert("Airdropped " + amount + " SOL to " + wallet.publicKey.toBase58());
     }
 
-    return <div>
-        <input id="input" type={type} placeholder={placeholder} />
-        <button  onClick={getSol}>Add Airdrop</button>
+    return <div className="flex justify-center items-center space-x-3">
+        <input id="input" className="p-3" type={type} placeholder={placeholder} />
+        <div className="ml-6">
+            <Button variant={"outline"} className="p-4" onClick={getSol}>Add Airdrop</Button>
+        </div>
     </div>
 }
