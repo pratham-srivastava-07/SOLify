@@ -21,6 +21,7 @@ import "./globals.css";
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import Appbar from '@/components/Appbar';
 import Footer from '@/components/Footer';
+import { Providers } from '@/providers/SessionProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,22 +48,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-                <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
-              <WalletProvider wallets={[]} autoConnect>
-              <WalletModalProvider>
-                  <Appbar/>
-                    {children} 
-              </WalletModalProvider>
-              </WalletProvider>
-          </ConnectionProvider>
-          </ThemeProvider>
+        <Providers>
+          <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+                  <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
+                <WalletProvider wallets={[]} autoConnect>
+                <WalletModalProvider>
+                    <Appbar/>
+                      {children} 
+                </WalletModalProvider>
+                </WalletProvider>
+            </ConnectionProvider>
+            </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
