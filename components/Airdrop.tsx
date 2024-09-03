@@ -3,35 +3,53 @@
 import { useState } from 'react';
 import { useConnection } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import { Button } from './ui/button';  
-
+import { Button } from './ui/button';  // Assuming you have a reusable Button component
 
 export default function Airdrop() {
-    const [recipient, setRecipient] = useState('')
-    const {connection} = useConnection()
+    const { connection } = useConnection();
     
     async function handleClick() {
         try {
-            setRecipient((document.getElementById("address") as HTMLDivElement).innerHTML);
+            
+            const recipientAddress = (document.getElementById("address") as HTMLInputElement).value;
+            const amountStr = (document.getElementById("input") as HTMLInputElement).value.trim();
 
-            if(!recipient) throw new Error("Not valid address");
-            const publicKey = new PublicKey(recipient);
+            
+            const amount = parseFloat(amountStr);
 
-            const amount : any = (document.getElementById("input") as HTMLInputElement).value
-            const sign =  await connection.requestAirdrop(publicKey, amount * LAMPORTS_PER_SOL);
+            if (!recipientAddress) throw new Error("Please enter a valid Solana address.");
+            if (isNaN(amount) ) throw new Error("Please enter a valid amount.");
 
+            const publicKey = new PublicKey(recipientAddress);
 
-            alert("Airdrop successful! 1 SOL sent to " + recipient)
-        } catch(e) {
-            alert(e)
+            // Request airdrop
+            const signature = await connection.requestAirdrop(publicKey, amount * LAMPORTS_PER_SOL);
+
+            alert(`Airdrop successful! ${amount} SOL sent to ${recipientAddress}`);
+        } catch (e: any) {
+            alert(`Airdrop failed: ${e.message}`);
         }
     }
     
-    return <div>
-       <input type="text" className='address ' />
-       <input type="text" name="" id="input" />
-       <div className="ml-6">
-            <Button variant={"outline"} className="p-4" onClick={handleClick}>Add Airdrop</Button>
+    return (
+        <div>
+            <input 
+                type="text" 
+                id="address" 
+                placeholder="Enter recipient's address" 
+                className="p-2 border rounded mb-2" 
+            />
+            <input 
+                type="text" 
+                id="input" 
+                placeholder="Enter amount" 
+                className="p-2 border rounded mb-2" 
+            />
+            <div className="ml-6">
+                <Button variant={"outline"} className="p-4" onClick={handleClick}>
+                    Receive Solana
+                </Button>
+            </div>
         </div>
-    </div>
+    );
 }
