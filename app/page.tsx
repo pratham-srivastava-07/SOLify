@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import '@solana/wallet-adapter-react-ui/styles.css';
-import Input from '@/components/Input';
+import Input from '@/components/ownAirdrop';
 import Appbar from '@/components/Appbar';
 import Main from '@/components/Main';
 import SignMsg from '@/components/SignMsg';
