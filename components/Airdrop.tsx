@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from 'react';
+
 import { useConnection } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import { Button } from './ui/button';  // Assuming you have a reusable Button component
+import { Button } from './ui/button';  
 
 export default function Airdrop() {
     const { connection } = useConnection();
@@ -12,18 +12,20 @@ export default function Airdrop() {
         try {
             
             const recipientAddress = (document.getElementById("address") as HTMLInputElement).value;
-            const amountStr = (document.getElementById("input") as HTMLInputElement).value.trim();
+            const amountStr = (document.getElementById("input") as HTMLInputElement).value;
 
             
             const amount = parseFloat(amountStr);
 
             if (!recipientAddress) throw new Error("Please enter a valid Solana address.");
-            if (isNaN(amount) ) throw new Error("Please enter a valid amount.");
+           
+            const lamports = Math.floor(amount * LAMPORTS_PER_SOL)
+            
 
             const publicKey = new PublicKey(recipientAddress);
 
             // Request airdrop
-            const signature = await connection.requestAirdrop(publicKey, amount * LAMPORTS_PER_SOL);
+            const signature = await connection.requestAirdrop(publicKey, lamports);
 
             alert(`Airdrop successful! ${amount} SOL sent to ${recipientAddress}`);
         } catch (e: any) {
@@ -45,7 +47,7 @@ export default function Airdrop() {
                 placeholder="Enter amount" 
                 className="p-2 border rounded mb-2" 
             />
-            <div className="ml-6">
+            <div className="ml-6 flex justify-center pt-4">
                 <Button variant={"outline"} className="p-4" onClick={handleClick}>
                     Receive Solana
                 </Button>
