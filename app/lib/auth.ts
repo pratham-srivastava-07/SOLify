@@ -5,7 +5,7 @@ import { client } from "./db";
 
 
 
-export const handler = NextAuth({
+export const authOptions = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
