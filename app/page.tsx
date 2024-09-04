@@ -3,22 +3,18 @@
 import React, { useEffect, useState } from 'react';
 import '@solana/wallet-adapter-react-ui/styles.css';
 import Input from '@/components/ownAirdrop';
-import Appbar from '@/components/Appbar';
 import Main from '@/components/Main';
 import SignMsg from '@/components/SignMsg';
-import { WalletCard } from '@/components/WalletCard';
 import SendTokens from '@/components/SendTokens';
 import ShowBalance from '@/components/ShowBalance';
 import Airdrop from '@/components/Airdrop';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
 
-
-  const session = useSession()
-
-  
+  const {data : session}: any = useSession()
 
     useEffect(() => {
         setMounted(true);
@@ -30,22 +26,35 @@ export default function Home() {
 
     return <div>
         <div>
-            { session.status && <div>
+             <div>
           <Main/>
           <Input placeholder='airdrop' type='text'/>
-        </div>}
+        </div>
         </div>
         {/* <div className='flex items-center justify-center'>
             <WalletCard/>
         </div> */}
-        <div className="flex items-center justify-center mt-10">
-            <Airdrop />
+        <div className="flex items-center justify-center">
+            <SignMsg />
         </div>
+       <div className='flex items-center justify-center'>
+        
+        { session ? <div className="flex items-center justify-center mt-10">
+            <Airdrop />
+        </div>: <div>
+                <Button onClick={() => signIn()}>Sign in first</Button>
+            </div>}
+       </div>
         <div className='flex items-center justify-center pt-10'>
             <ShowBalance/>
         </div>
         <div className='flex items-center justify-center pt-10'>
             <SendTokens/>
+        </div>
+        <div>
+            {session && <div className="flex items-center justify-center">
+            <Button onClick={() => signOut()}>Signout</Button>
+        </div>}
         </div>
     </div>
    
