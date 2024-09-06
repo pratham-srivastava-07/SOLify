@@ -26,7 +26,7 @@ export default function SignMsg() {
                 <input id="id" type='text' placeholder='Sign' />
             </div>
             <div>
-                <Button onClick={handler}>Sign Message</Button>
+                <Button variant={"outline"} onClick={handler}>Sign Message</Button>
             </div>
         </div>
     );

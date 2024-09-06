@@ -25,25 +25,19 @@ export default function Home() {
     }
 
     return <div>
-        <div>
+        {session ? <>
+            <div>
              <div>
-          <Main/>
           <Input placeholder='airdrop' type='text'/>
         </div>
         </div>
-        {/* <div className='flex items-center justify-center'>
-            <WalletCard/>
-        </div> */}
         <div className="flex items-center justify-center">
             <SignMsg />
         </div>
        <div className='flex items-center justify-center'>
-        
-        { session ? <div className="flex items-center justify-center mt-10">
+         <div className="flex items-center justify-center mt-10">
             <Airdrop />
-        </div>: <div>
-                <Button onClick={() => signIn()}>Sign in first</Button>
-            </div>}
+        </div>
        </div>
         <div className='flex items-center justify-center pt-10'>
             <ShowBalance/>
@@ -51,11 +45,11 @@ export default function Home() {
         <div className='flex items-center justify-center pt-10'>
             <SendTokens/>
         </div>
-        <div>
-            {session && <div className="flex items-center justify-center">
-            <Button onClick={() => signOut()}>Signout</Button>
+        </> : <div className='flex items-center justify-center mt-10'>
+                <Button onClick={() => signIn()}>Sign in First</Button>
+            </div>}
+        {session && <div className='flex items-center justify-center mt-10'>
+            <Button onClick={() => signOut()}>Log Out</Button>
         </div>}
-        </div>
     </div>
-   
 }
