@@ -1,4 +1,4 @@
-import SendTokens from "@/components/SendTokens";
+import SendTokens from "@/pages/SendTokens";
 
 export default function() {
     return <div>

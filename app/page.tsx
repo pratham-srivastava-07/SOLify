@@ -2,15 +2,13 @@
 
 import React, { useEffect,  useState } from 'react';
 import '@solana/wallet-adapter-react-ui/styles.css';
-import { useSession, signIn, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { WalletCard } from '@/components/WalletCard';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const router = useRouter()
-
-  const {data : session}: any = useSession()
 
     useEffect(() => {
         setMounted(true);
@@ -19,36 +17,9 @@ export default function Home() {
     if (!mounted) {
         return null; 
     }
-
     return <div>
-        {/* {session ? <>
-            <div>
-             <div>
-          <Input placeholder='airdrop' type='text'/>
-        </div>
-        </div>
-        <div className="flex items-center justify-center">
-            <SignMsg />
-        </div>
-       <div className='flex items-center justify-center'>
-         <div className="flex items-center justify-center mt-10">
-            <Airdrop />
-        </div>
-       </div>
-        <div className='flex items-center justify-center pt-10'>
-            <ShowBalance/>
-        </div>
-        <div className='flex items-center justify-center pt-10'>
-            <SendTokens/>
-        </div>
-        </> : <div className='flex items-center justify-center mt-10'>
-                <Button onClick={() => signIn()}>Sign in First</Button>
-            </div>}
-        {session && <div className='flex items-center justify-center mt-10'>
-            <Button onClick={() => signOut()}>Log Out</Button>
-        </div>} */}
         
-        {session ? <div>
+         <div>
                 <div className="grid grid-col-2">
                     <div className="flex items-center justify-center space-x-3">
                         <div>
@@ -72,9 +43,8 @@ export default function Home() {
                             <Button onClick={()=>{router.push("/sign-msg")}}>Sign Message</Button>
                         </div>
                     </div>
+                    <WalletCard />
                 </div>
-            </div> : <div className='flex items-center justify-center mt-10'>
-                <Button onClick={() => signIn()}>Sign in First</Button>
-            </div>}
+            </div>
     </div>
 }
