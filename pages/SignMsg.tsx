@@ -1,7 +1,8 @@
 "use client"
 
+import { Button } from '@/components/ui/button';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { Button } from './ui/button';
+
 
 export default function SignMsg() {
     const { publicKey, signMessage }: any = useWallet();

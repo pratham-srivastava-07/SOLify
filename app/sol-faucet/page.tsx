@@ -1,6 +1,6 @@
-import Airdrop from "@/components/Airdrop";
+import Airdrop from "@/pages/Airdrop";
 
-export default function() {
+export default function FaucetPage() {
     return <div>
         <Airdrop />
     </div>

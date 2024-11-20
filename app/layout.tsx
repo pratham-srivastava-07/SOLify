@@ -1,14 +1,11 @@
 "use client"
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets';
+
 import {
     WalletModalProvider,
-    WalletDisconnectButton,
-    WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
-import { clusterApiUrl } from '@solana/web3.js';
+;
 
 // Default styles that can be overridden by your app
 import '@solana/wallet-adapter-react-ui/styles.css';
@@ -19,9 +16,7 @@ import { Inter } from "next/font/google";
 import { Inter as FontSans } from "next/font/google"
 import "./globals.css";
 import { ThemeProvider } from '@/providers/ThemeProvider';
-import Appbar from '@/components/Appbar';
-import Footer from '@/components/Footer';
-import { Providers } from '@/providers/SessionProvider';
+import RenderProvider from '@/providers/RenderProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,35 +31,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-        const [mounted, setMounted] = useState(false);
-
-        useEffect(() => {
-            setMounted(true);
-        }, []);
-
-        if (!mounted) {
-            return null; 
-        }
+       
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-                  <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
-                <WalletProvider wallets={[]} autoConnect>
-                <WalletModalProvider>
-                    <Appbar/>
-                      {children} 
-                </WalletModalProvider>
-                </WalletProvider>
-            </ConnectionProvider>
-            </ThemeProvider>
-        </Providers>
+          <RenderProvider>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                    <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
+                  <WalletProvider wallets={[]} autoConnect>
+                  <WalletModalProvider>
+                      {/* <Appbar/> */}
+                        {children} 
+                  </WalletModalProvider>
+                  </WalletProvider>
+              </ConnectionProvider>
+              </ThemeProvider>
+          </RenderProvider>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-import SignMsg from "@/components/SignMsg";
+import SignMsg from "@/pages/SignMsg";
 
 export default function() {
     return <div>

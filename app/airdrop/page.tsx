@@ -1,4 +1,4 @@
-import OwnAirdrop from "@/components/ownAirdrop";
+import OwnAirdrop from "@/pages/ownAirdrop";
 
 export default function() {
     return <div>

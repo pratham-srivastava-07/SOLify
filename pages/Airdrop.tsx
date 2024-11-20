@@ -1,9 +1,10 @@
 "use client"
 
 
+import { Button } from "@/components/ui/button";
 import { useConnection } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import { Button } from './ui/button';  
+  
 
 export default function Airdrop() {
     const { connection } = useConnection();

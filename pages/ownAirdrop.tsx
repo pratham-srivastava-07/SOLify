@@ -3,7 +3,7 @@
 import {  useWallet } from "@solana/wallet-adapter-react"
 import { useConnection } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function OwnAirdrop({type, placeholder}: {type: string, placeholder: string}) {
     const wallet: any = useWallet()
