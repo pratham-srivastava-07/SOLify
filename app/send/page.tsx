@@ -1,6 +1,6 @@
 import SendTokens from "@/pages/SendTokens";
 
-export default function() {
+export default function SendPage() {
     return <div>
         <SendTokens />
     </div>
