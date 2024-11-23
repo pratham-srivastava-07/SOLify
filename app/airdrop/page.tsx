@@ -1,4 +1,4 @@
-import OwnAirdrop from "@/pages/ownAirdrop";
+import OwnAirdrop from "@/pages/own-air";
 
 export default function AirdropPage() {
     return <div>

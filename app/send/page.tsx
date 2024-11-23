@@ -1,4 +1,4 @@
-import SendTokens from "@/pages/SendTokens";
+import SendTokens from "@/pages/send-tokens";
 
 export default function SendPage() {
     return <div>

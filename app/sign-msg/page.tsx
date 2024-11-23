@@ -1,4 +1,4 @@
-import SignMsg from "@/pages/SignMsg";
+import SignMsg from "@/pages/Sign-msg";
 
 export default function SignPage() {
     return <div>

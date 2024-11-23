@@ -2,11 +2,12 @@
 
 import React, { } from 'react';
 import '@solana/wallet-adapter-react-ui/styles.css';
-import Test from '@/components/test'
+import LandingPage from '@/pages/landing';
+
+
 
 export default function Home() {
     return <div>
-        {/* <Hero /> */}
-        <Test />
+        <LandingPage />
     </div>
 }
