@@ -56,7 +56,7 @@ export default function SendTokens() {
         </CardHeader>
         <CardContent className="space-y-6 p-6">
           <p className="text-sm text-gray-600 dark:text-gray-300">
-            Use this tool to send SOL tokens to any recipient. Enter the recipient's address and the amount of SOL to send.
+            Use this tool to send SOL tokens to any recipient. Enter the recipient`&apos;`s address and the amount of SOL to send.
           </p>
           <div>
             <label
@@ -97,7 +97,7 @@ export default function SendTokens() {
         </CardFooter>
       </Card>
       <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">
-        Note: Ensure that the recipient's address is correct before proceeding with the transfer.
+        Note: Ensure that the recipient`&apos;`s address is correct before proceeding with the transfer.
       </p>
       <p className="text-sm text-gray-600 dark:text-gray-400">
         Transfer tokens quickly and securely within the Solana network. 🌐
