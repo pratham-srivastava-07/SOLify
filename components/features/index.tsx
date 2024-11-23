@@ -10,7 +10,7 @@ export default function Features() {
               <Zap className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-bold mb-4">Lightning Fast</h3>
-            <p className="text-gray-300">SOLify leverages Solana's speed for instant transactions.</p>
+            <p className="text-gray-300">SOLify leverages Solana`&apos;`s speed for instant transactions.</p>
           </div>
           <div className="text-center p-6">
             <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">

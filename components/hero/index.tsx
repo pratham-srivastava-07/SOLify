@@ -23,7 +23,7 @@ export default function Hero() {
             Transform your blockchain journey with SOLify - where speed meets simplicity on the Solana network.
           </p>
           <div className="flex justify-center gap-6">
-            <Link href={"/main"}>
+            <Link href={"/dashboard"}>
                 <Button className="px-8 py-6 bg-green-600 rounded-lg hover:bg-green-700 transition-colors flex font-semibold items-center gap-2">
                     Launch SOLify
                     <ArrowRight className="w-5 h-5" />

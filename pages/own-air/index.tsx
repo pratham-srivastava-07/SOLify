@@ -50,7 +50,7 @@ export default function OwnAirdrop({
         <CardHeader className="bg-gradient-to-br from-blue-900 to-purple-600 text-white p-6 rounded-t-md">
           <div className="flex flex-col items-start">
             <CardTitle className="text-2xl font-bold">
-              Wallet Airdrop Tool
+              SOLify Airdrop Tool
             </CardTitle>
             <p className="text-sm font-medium mt-2 text-gray-200">
               Easily request SOL tokens for your connected wallet to kickstart your Solana journey.
@@ -92,7 +92,7 @@ export default function OwnAirdrop({
         Note: Ensure your wallet is connected and you’re operating on the testnet for airdrops.
       </p>
       <p className="text-sm text-gray-600 dark:text-gray-400">
-        Start building and experimenting with Solana's powerful ecosystem. 🚀
+        Start building and experimenting with Solana`&apos;`s powerful ecosystem. 🚀
       </p>
     </div>
   );
